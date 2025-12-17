@@ -7,7 +7,6 @@ import {
   LogOut,
   Scissors,
   SquarePen,
-  Users,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { House } from "lucide-react";
@@ -47,11 +46,6 @@ const navItems = [
     to: "/ai/review-resume",
     label: "Review Resume",
     Icon: FileText,
-  },
-  {
-    to: "/ai/community",
-    label: "Community",
-    Icon: Users,
   },
 ];
 const Sidebar = ({ sidebar, setSidebar }) => {
