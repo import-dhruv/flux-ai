@@ -2,6 +2,7 @@ import { Edit, Sparkle } from "lucide-react";
 import React, { useState } from "react";
 import axios from "axios";
 import { useAuth } from "@clerk/clerk-react";
+import toast from "react-hot-toast";
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 

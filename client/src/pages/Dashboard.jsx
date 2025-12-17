@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useAuth, Protect } from "@clerk/clerk-react";
 import { Sparkles, Gem } from "lucide-react";
 import CreationItem from "../components/CreationItem";
@@ -12,7 +12,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const { getToken } = useAuth();
 
-  const getDashboardData = async () => {
+  const getDashboardData = useCallback(async () => {
     try {
       const { data } = await axios.get("/api/user/get-user-creations", {
         headers: {
@@ -28,10 +28,11 @@ const Dashboard = () => {
       toast.error(error.message);
     }
     setLoading(false);
-  };
+  }, [getToken]);
+
   useEffect(() => {
     getDashboardData();
-  }, []);
+  }, [getDashboardData]);
   return (
     <div className="h-full overflow-y-scroll p-6">
       <div className="flex justify-start gap-4 flex-wrap">
